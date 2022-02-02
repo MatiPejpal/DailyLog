@@ -40,7 +40,7 @@ class EntryWriter extends JPanel{
 
         c.gridx = 1;
         c.gridy = 0;
-        add(addButton(), c);
+        add(createAddButton(), c);
 
         c.gridx = 0;
         c.gridy = 1;
@@ -54,6 +54,7 @@ class EntryWriter extends JPanel{
     }
 
     static private JTextField createDateField(){
+        // creates text field for date
         JTextField t = new JTextField();
         t.setBackground(Color.gray);
         t.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(1,1,1,1), BorderFactory.createLineBorder(Color.black, 1)));
@@ -64,6 +65,7 @@ class EntryWriter extends JPanel{
     }
 
     static private JTextArea createActivityField(){
+        // creates text area for substance of entries (activities)
         JTextArea t = new JTextArea();
         t.setBackground(Color.gray);
         t.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(1,1,1,1), BorderFactory.createLineBorder(Color.black, 1)));
@@ -73,7 +75,8 @@ class EntryWriter extends JPanel{
         return t;
     }
 
-    static private JButton addButton(){
+    static private JButton createAddButton(){
+        // creates button that will save and add entry
         JButton b = new JButton("+");
         b.setPreferredSize(new Dimension(40,40));
         b.setMaximumSize(new Dimension(40,40));
