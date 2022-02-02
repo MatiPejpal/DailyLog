@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.util.Date;
 
 class DailyLog extends JFrame {
@@ -29,7 +31,7 @@ class EntryWriter extends JPanel{
 
     EntryWriter(){
         init(this);
-        final JTextField dateField = createDateField();
+        final GhostTextField dateField = createDateField();
         final JTextArea activityField = createActivityField();
 
         GridBagConstraints c = new GridBagConstraints();
@@ -53,9 +55,9 @@ class EntryWriter extends JPanel{
         p.setLayout(new GridBagLayout());
     }
 
-    static private JTextField createDateField(){
+    static private GhostTextField createDateField(){
         // creates text field for date
-        JTextField t = new JTextField();
+        GhostTextField t = new GhostTextField("DD.MM.YYYY");
         t.setBackground(Color.gray);
         t.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(1,1,1,1), BorderFactory.createLineBorder(Color.black, 1)));
         t.setPreferredSize(new Dimension(360, 40));
@@ -76,7 +78,7 @@ class EntryWriter extends JPanel{
     }
 
     static private JButton createAddButton(){
-        // creates button that will save and add entry
+        // creates button that will save and add entry.
         JButton b = new JButton("+");
         b.setPreferredSize(new Dimension(40,40));
         b.setMaximumSize(new Dimension(40,40));
@@ -87,10 +89,33 @@ class EntryWriter extends JPanel{
         return b;
     }
 
+    private static class GhostTextField extends JTextField{
+        // class that modifies JTextField to add to it ghost text.
+        GhostTextField(final String ghostText){
+            super(ghostText);
+            addFocusListener(new FocusListener() {
+
+                @Override
+                public void focusLost(FocusEvent e) {
+                    if(getText().isEmpty()) {
+                        setText(ghostText);
+                    }
+                }
+
+                @Override
+                public void focusGained(FocusEvent e) {
+                    if(getText().equals(ghostText)) {
+                        setText("");
+                    }
+                }
+            });
+        }
+    }
+
 }
 
 class Entry{
-    // Class that contains date and activities
+    // Class that contains date and activities.
 
     Date date;
     String activities;
