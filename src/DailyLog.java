@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 class DailyLog extends JFrame {
@@ -7,14 +9,18 @@ class DailyLog extends JFrame {
 
     DailyLog(){
         init(this);
+        final ArrayList<Entry> entries = new ArrayList<>();
+        add(new EntryWriter(entries));
+        pack();
     }
 
-    static void init(JFrame f){
+    static private void init(JFrame f){
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setSize(new Dimension(400, 800));
         f.getContentPane().setBackground(Color.gray);
         f.setLocationRelativeTo(null);
         f.getContentPane().setLayout(new BoxLayout(f.getContentPane(), BoxLayout.Y_AXIS));
+        f.setPreferredSize(new Dimension(420, 800));
+        f.setMinimumSize(new Dimension(420, 800));
         f.setVisible(true);
     }
 
@@ -23,12 +29,12 @@ class DailyLog extends JFrame {
 }
 
 class Entry{
-    // Class that contains date and activities
+    // Class that contains date and activities.
 
-    Date date;
+    LocalDate date;
     String activities;
 
-    Entry(Date date, String activities){
+    Entry(LocalDate date, String activities){
         this.date = date;
         this.activities = activities;
     }
