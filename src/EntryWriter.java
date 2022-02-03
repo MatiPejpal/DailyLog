@@ -69,7 +69,6 @@ class EntryWriter extends JPanel {
         b.setBackground(Color.gray);
         b.addActionListener((a) -> {
             LocalDate date;
-            System.out.println(d.getText());
             try {
                 date = LocalDate.parse(d.getText());
             }
