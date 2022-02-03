@@ -1,8 +1,5 @@
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.util.Date;
 
 class DailyLog extends JFrame {
@@ -19,14 +16,14 @@ class DailyLog extends JFrame {
         f.getContentPane().setBackground(Color.gray);
         f.setLocationRelativeTo(null);
         f.getContentPane().setLayout(new BoxLayout(f.getContentPane(), BoxLayout.Y_AXIS));
+        f.setPreferredSize(new Dimension(420, 800));
+        f.setMinimumSize(new Dimension(420, 800));
         f.setVisible(true);
     }
 
     public static void main(String[] args){ SwingUtilities.invokeLater(DailyLog::new); }
 
 }
-
-
 
 class Entry{
     // Class that contains date and activities.

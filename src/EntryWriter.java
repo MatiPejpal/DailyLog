@@ -31,6 +31,8 @@ class EntryWriter extends JPanel {
     static private void init(JPanel p){
         p.setBackground(Color.gray);
         p.setLayout(new GridBagLayout());
+        p.setPreferredSize(new Dimension(400, 140));
+        p.setMinimumSize(new Dimension(400, 140));
     }
 
     static private GhostTextField createDateField(){
@@ -50,7 +52,7 @@ class EntryWriter extends JPanel {
         t.setBackground(Color.gray);
         t.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(1,1,1,1), BorderFactory.createLineBorder(Color.black, 1)));
         t.setPreferredSize(new Dimension(400, 100));
-        t.setMinimumSize(new Dimension(360, 40));
+        t.setMinimumSize(new Dimension(400, 100));
         t.setVisible(true);
         return t;
     }
