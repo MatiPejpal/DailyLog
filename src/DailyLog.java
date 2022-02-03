@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 class DailyLog extends JFrame {
@@ -7,7 +9,8 @@ class DailyLog extends JFrame {
 
     DailyLog(){
         init(this);
-        add(new EntryWriter());
+        final ArrayList<Entry> entries = new ArrayList<>();
+        add(new EntryWriter(entries));
         pack();
     }
 
@@ -28,10 +31,10 @@ class DailyLog extends JFrame {
 class Entry{
     // Class that contains date and activities.
 
-    Date date;
+    LocalDate date;
     String activities;
 
-    Entry(Date date, String activities){
+    Entry(LocalDate date, String activities){
         this.date = date;
         this.activities = activities;
     }

@@ -4,11 +4,12 @@ import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 class EntryWriter extends JPanel {
     // Class that allow user to write and save entries.
 
-    EntryWriter(){
+    EntryWriter(ArrayList<Entry> entries){
         init(this);
         final GhostTextField dateField = createDateField();
         final JTextArea activityField = createActivityField();
@@ -21,7 +22,7 @@ class EntryWriter extends JPanel {
 
         c.gridx = 1;
         c.gridy = 0;
-        add(createAddButton(dateField), c);
+        add(createAddButton(entries, dateField, activityField), c);
 
         c.gridx = 0;
         c.gridy = 1;
@@ -59,7 +60,7 @@ class EntryWriter extends JPanel {
         return t;
     }
 
-    static private JButton createAddButton(JTextField d){
+    static private JButton createAddButton(ArrayList<Entry> entries, JTextField d, JTextArea af){
         // creates button that will save and add entry.
         JButton b = new JButton("+");
         b.setPreferredSize(new Dimension(40,40));
@@ -76,7 +77,7 @@ class EntryWriter extends JPanel {
                 return;
             }
 
-            System.out.println("saving entry");
+            entries.add(new Entry(date, af.getText()));
         });
         b.setVisible(true);
         return b;
