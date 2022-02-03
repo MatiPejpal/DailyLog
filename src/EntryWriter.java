@@ -3,6 +3,7 @@ import javax.swing.border.CompoundBorder;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.time.LocalDate;
 
 class EntryWriter extends JPanel {
     // Class that allow user to write and save entries.
@@ -20,7 +21,7 @@ class EntryWriter extends JPanel {
 
         c.gridx = 1;
         c.gridy = 0;
-        add(createAddButton(), c);
+        add(createAddButton(dateField), c);
 
         c.gridx = 0;
         c.gridy = 1;
@@ -37,7 +38,7 @@ class EntryWriter extends JPanel {
 
     static private GhostTextField createDateField(){
         // creates text field for date
-        GhostTextField t = new GhostTextField("DD.MM.YYYY");
+        GhostTextField t = new GhostTextField("YYYY-MM-DD");
         t.setBackground(Color.gray);
         t.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(1,1,1,1), BorderFactory.createLineBorder(Color.black, 1)));
         t.setPreferredSize(new Dimension(360, 40));
@@ -57,7 +58,7 @@ class EntryWriter extends JPanel {
         return t;
     }
 
-    static private JButton createAddButton(){
+    static private JButton createAddButton(JTextField d){
         // creates button that will save and add entry.
         JButton b = new JButton("+");
         b.setPreferredSize(new Dimension(40,40));
@@ -65,6 +66,18 @@ class EntryWriter extends JPanel {
         b.setFocusPainted(false);
         b.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(1,1,1,1), BorderFactory.createSoftBevelBorder(0, Color.gray, Color.darkGray)));
         b.setBackground(Color.gray);
+        b.addActionListener((a) -> {
+            LocalDate date;
+            System.out.println(d.getText());
+            try {
+                date = LocalDate.parse(d.getText());
+            }
+            catch (Exception e) {
+                return;
+            }
+
+            System.out.println("saving entry");
+        });
         b.setVisible(true);
         return b;
     }
