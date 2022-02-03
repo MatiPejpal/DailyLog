@@ -43,6 +43,7 @@ class EntryWriter extends JPanel {
         t.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(1,1,1,1), BorderFactory.createLineBorder(Color.black, 1)));
         t.setPreferredSize(new Dimension(360, 40));
         t.setMaximumSize(new Dimension(360, 40));
+        t.setHorizontalAlignment(SwingConstants.CENTER);
         t.setVisible(true);
         return t;
     }
