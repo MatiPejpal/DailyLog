@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 class DailyLog extends JFrame {
     // Class that handles GUI and shows entries to the log.
@@ -10,6 +9,7 @@ class DailyLog extends JFrame {
     DailyLog(){
         init(this);
         final ArrayList<Entry> entries = new ArrayList<>();
+        add(new EntryDisplay(entries));
         add(new EntryWriter(entries));
         pack();
     }
