@@ -33,6 +33,7 @@ class EntryWriter extends JPanel {
     static private void init(JPanel p){
         p.setBackground(Color.gray);
         p.setLayout(new GridBagLayout());
+        p.setAlignmentX(SwingConstants.CENTER);
         p.setPreferredSize(new Dimension(400, 140));
         p.setMinimumSize(new Dimension(400, 140));
     }
