@@ -21,7 +21,6 @@ class EntryDisplay extends JPanel {
         p.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(3,3,1,3), BorderFactory.createLineBorder(Color.black, 1)));
     }
 
-
     private static class SingleEntryDisplay extends JPanel{
 
         SingleEntryDisplay(Entry entry){

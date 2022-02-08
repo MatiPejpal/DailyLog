@@ -17,7 +17,6 @@ class DailyLog extends JFrame {
     static private void init(JFrame f){
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.getContentPane().setBackground(Color.gray);
-        f.setLocationRelativeTo(null);
         f.getContentPane().setLayout(new BoxLayout(f.getContentPane(), BoxLayout.Y_AXIS));
         f.setPreferredSize(new Dimension(420, 800));
         f.setMinimumSize(new Dimension(420, 800));
